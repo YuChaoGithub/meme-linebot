@@ -19,6 +19,8 @@ go test ./...
 ```
 
 # Admin APIs
+Use the **uploader** tool in `./tools/uploader` to automatically upload meme images from a local directory.
+
 ## `/add`
 Add a new meme entry.
 
@@ -45,9 +47,9 @@ Request Body:
 ```
 
 # Future Plan
-* Write an administrative web frontend for the author so that he can upload new memes easier.
+* Write more unit tests. Only `package models` is fully tested now.
 * Redesign the frontend of the homepage.
-* Write more unit tests.
+* Implement a tracker to track the statistics of meme usage.
 
 # Development Log
 ## 2020.08.29

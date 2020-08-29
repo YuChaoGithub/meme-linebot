@@ -1,0 +1,1 @@
+This directory contains some command line utility for the admin.
