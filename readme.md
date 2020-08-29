@@ -1,7 +1,13 @@
 # Line Chatbot: Meme Collector (Meme藏家)
 A Line chatbot which replies a meme image when certain keywords are detected.
 
-![Add me on Line](https://i.imgur.com/PZ4xgtx.png)
+Add me on Line:
+
+<img src="https://i.imgur.com/PZ4xgtx.png" alt="QRCode" width=250>
+
+Demo:
+
+<img src="https://i.imgur.com/VLL3J2w.jpg" alt="Demo" height=500>
 
 # Usage
 1. Add me on Line using QRCode or [this link](https://line.me/ti/p/@560xwtfv).
