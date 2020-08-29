@@ -17,11 +17,12 @@
     <img src="/static/img/lord.png" alt="The Meme Lord" style="width: 80px" />
   </div>
   <div style="text-align: center;">
-    <a href="https://github.com/YuChaoGithub/meme-linebot" style="color:cornflowerblue; text-decoration: none;">原始碼 Source Code</a>
+    <div>共{{len .}}件收藏，持續蒐集中🧐</div>
+    <div><a href="https://github.com/YuChaoGithub/meme-linebot" style="color:cornflowerblue; text-decoration: none;">原始碼 Source Code</a></div>
   </div>
   <hr />
   
-  <div>可使用之指令 Available Commands：</div>
+  <h2>可使用之指令 Available Commands</h2>
   <ul>
     {{range .}}
       <li><a href="{{.Link}}" style="color:cornflowerblue; text-decoration: none;">{{.Name}}</a></li>
