@@ -5,10 +5,12 @@ A Line chatbot which replies a meme image when certain keywords are detected.
 
 # Usage
 1. Add me on Line using QRCode or [this link](https://line.me/ti/p/@560xwtfv).
-2. Send a meme keyword with `.jpg`. (Try `我就爛.jpg`, or `always has been.jpg`, check the full keyword list on [here](https://meme-linebot.herokuapp.com/).)
-3. Nice!
+2. Send a meme keyword with `.jpg`. (Try `我就爛.jpg`, or `always has been.jpg`.)
+3. [Nice!](https://i.imgur.com/mUUOa0v.jpg)
 
-# Development
+[Full Command List (it keeps on updating)](https://meme-linebot.herokuapp.com/)
+
+# Development & Deployment
 It is difficult to run this chatbot in local environments because the chatbot is triggered via webhooks.
 
 ## Run Tests
@@ -16,6 +18,12 @@ It is difficult to run this chatbot in local environments because the chatbot is
 ./start_test_container.sh
 go test ./...
 ./clean_test_container.sh
+```
+
+## Deploy to Heroku
+```
+heroku container:push -a meme-linebot web
+heroku container:release -a meme-linebot web
 ```
 
 # Admin APIs
