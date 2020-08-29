@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='zh-Hant'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="author" content="Chao Yu"/>
+  <title>Meme藏家．精選</title>
+  <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'>
+</head>
+
+<body>
+  <div style="text-align: center; width: 100%">
+    <img src="/static/img/header.png" alt="Meme藏家" style="width:100%" />
+  </div>
+  <div style="text-align: center;">
+    <img src="/static/img/lord.png" alt="The Meme Lord" style="width: 80px" />
+  </div>
+  <div style="text-align: center;">
+    請用Ctrl+F或Cmd+F查詢您屬意之Meme!
+  </div>
+  <hr />
+  
+  <ul>
+    {{range .}}
+      <li><a href="{{.Link}}" style="color:cornflowerblue; text-decoration: none;">{{.Name}}</a></li>
+    {{end}}
+  </ul>
+
+</body>
+
+</html>

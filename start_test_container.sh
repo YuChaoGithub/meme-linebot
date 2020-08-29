@@ -1,0 +1,1 @@
+docker container run -p 5432:5432 -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=memebot_test --name test_db postgres:13

@@ -1,0 +1,1 @@
+docker container rm -v -f test_db
