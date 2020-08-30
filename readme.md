@@ -68,3 +68,6 @@ Request Body:
 # Development Log
 ## 2020.08.29
 * Started the project this morning and finished it before dinner. Yup.
+
+## 2020.08.30
+* The uploader tool will now show the error when it fails to upload image to Imgur.

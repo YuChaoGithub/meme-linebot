@@ -15,7 +15,7 @@ import (
 
 const (
 	completedPrefix           = "_completed_"
-	uploadCooldown            = 1
+	uploadCooldown            = 10
 	imgurUploadEndpoint       = "https://api.imgur.com/3/image"
 	memeLineBotUploadEndpoint = "https://meme-linebot.herokuapp.com/add"
 )
@@ -50,7 +50,7 @@ func main() {
 			continue
 		}
 
-		time.Sleep(uploadCooldown * time.Second)
+		time.Sleep(time.Second * uploadCooldown)
 
 		// Upload to imgur
 		fmt.Printf("Uploading %v to imgur...", file.Name())
@@ -130,13 +130,22 @@ func uploadToImgur(filename string) (string, error) {
 
 	respStruct := struct {
 		Data struct {
-			Link string `json:"link"`
+			Link  string `json:"link"`
+			Error struct {
+				Message string `json:"message"`
+			} `json:"error"`
 		} `json:"data"`
+		Success bool `json:"success"`
+		Status  int  `json:"status"`
 	}{}
 
 	err = json.Unmarshal(body, &respStruct)
 	if err != nil {
 		return "", err
+	}
+
+	if !respStruct.Success {
+		return "", fmt.Errorf("status %v - %v", respStruct.Status, respStruct.Data.Error.Message)
 	}
 
 	// Only need the imgur ID and extension.
