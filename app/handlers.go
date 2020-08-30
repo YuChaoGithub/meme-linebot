@@ -18,6 +18,11 @@ const (
 )
 
 var validSuffixes = []string{".jpg", ".png", ".gif", ".jpeg"}
+var punctuations = map[rune]struct{}{
+	'?': {}, '!': {}, '.': {}, ',': {}, '\'': {}, ';': {}, ':': {}, '-': {}, '(': {}, ')': {}, '"': {},
+	'。': {}, '，': {}, '！': {}, '？': {}, '、': {}, '：': {}, '；': {}, '）': {}, '（': {},
+	'‘': {}, '’': {}, '“': {}, '”': {},
+}
 
 // homepageHandler renders the home page listing all available memes.
 func (a *App) homepageHandler(w http.ResponseWriter, r *http.Request) {
@@ -178,8 +183,16 @@ func (a *App) replyWithMeme(replyToken string, memeName string) {
 		return
 	}
 
+	// Get rid of punctuations.
+	cleanedName := []rune{}
+	for _, val := range formattedName {
+		if _, ok := punctuations[val]; !ok {
+			cleanedName = append(cleanedName, val)
+		}
+	}
+
 	// Get the meme from the database.
-	memeURL, err := a.memeModel.Get(formattedName)
+	memeURL, err := a.memeModel.Get(string(cleanedName))
 	if err != nil {
 		// No such meme exists.
 		return

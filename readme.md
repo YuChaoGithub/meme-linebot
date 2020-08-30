@@ -71,3 +71,4 @@ Request Body:
 
 ## 2020.08.30
 * The uploader tool will now show the error when it fails to upload image to Imgur.
+* Now punctuations will be stripped out of the received messages, so that messages with redundant punctuations can also trigger the chatbot.
