@@ -63,6 +63,7 @@ Request Body:
 ```
 
 # Future Plan
+* Implement fuzzy search to give the user a closest match even if there is a typo.
 * Write more unit tests. Only `package models` is fully tested now.
 * Redesign the frontend of the homepage.
 * Implement a tracker to track the statistics of meme usage.
