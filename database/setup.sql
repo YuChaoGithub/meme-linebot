@@ -11,3 +11,8 @@ CREATE TABLE memes(
     name VARCHAR(128) UNIQUE,
     url VARCHAR(128)
 );
+
+-- For SIMILARITY function.
+-- Used for fuzzy keyword search.
+CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;

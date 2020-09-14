@@ -73,6 +73,43 @@ func TestGet(t *testing.T) {
 	}
 }
 
+func TestGetFuzzy(t *testing.T) {
+	// Testcases.
+	tests := []struct {
+		testName string
+		memeName string
+		wantURL  string
+	}{
+		{"Chinese", "就爛", "t9WaxTw.png"},
+		{"almost match", "bonjer", "qg8sB6f.png"},
+		{"exact match", "adios", "6UegMI2.png"},
+	}
+
+	// Perform tests.
+	for _, tc := range tests {
+		t.Run(tc.testName, func(t *testing.T) {
+			// Stub and driver.
+			db, teardown := newTestDB(t)
+			defer teardown()
+
+			m := MemeModel{db}
+
+			// When.
+			url, err := m.GetFuzzy(tc.memeName)
+
+			// Want.
+			wantURL := tc.wantURL
+			if err == nil {
+				wantURL = imgurBaseLink + wantURL
+			}
+
+			if url != wantURL {
+				t.Errorf("want %v; got %v", wantURL, url)
+			}
+		})
+	}
+}
+
 func TestInsert(t *testing.T) {
 	// Testcases.
 	tests := []struct {

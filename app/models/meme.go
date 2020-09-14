@@ -5,8 +5,9 @@ import (
 )
 
 const (
-	imgurBaseLink = "https://i.imgur.com/"
-	nameSuffix    = ".jpg"
+	imgurBaseLink       = "https://i.imgur.com/"
+	nameSuffix          = ".jpg"
+	similarityThreshold = 0.15
 )
 
 // MemeModel defines the database which the functions operate on.
@@ -51,6 +52,21 @@ func (m *MemeModel) Get(name string) (string, error) {
 	var res string
 	stmt := `SELECT url FROM memes WHERE name = $1`
 	row := m.DB.QueryRow(stmt, name)
+	err := row.Scan(&res)
+	if err != nil {
+		return "", err
+	}
+
+	return imgurBaseLink + res, nil
+}
+
+// GetFuzzy returns the image URL of the meme with the closest matching name.
+func (m *MemeModel) GetFuzzy(name string) (string, error) {
+	var res string
+
+	stmt := `WITH temp AS (SELECT url, SIMILARITY(name, $1) AS sim FROM memes)
+	 SELECT url FROM temp WHERE sim > $2 ORDER BY sim DESC LIMIT 1`
+	row := m.DB.QueryRow(stmt, name, similarityThreshold)
 	err := row.Scan(&res)
 	if err != nil {
 		return "", err

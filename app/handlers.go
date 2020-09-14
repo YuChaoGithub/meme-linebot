@@ -191,11 +191,15 @@ func (a *App) replyWithMeme(replyToken string, memeName string) {
 		}
 	}
 
-	// Get the meme from the database.
+	// Get the meme with exact matching name from the database.
 	memeURL, err := a.memeModel.Get(string(cleanedName))
 	if err != nil {
-		// No such meme exists.
-		return
+		// Get the meme with closest matching name from the database.
+		memeURL, err = a.memeModel.GetFuzzy(string(cleanedName))
+		if err != nil {
+			// No match.
+			return
+		}
 	}
 
 	// Reply with the meme image.
