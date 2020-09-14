@@ -7,7 +7,9 @@ ID: @560xwtfv
 
 <img src="https://i.imgur.com/PZ4xgtx.png" alt="QRCode" width=250>
 
-Demo:
+[Demo Video](https://youtu.be/mHjv9NcskbA)
+
+Usage Example:
 
 <img src="https://i.imgur.com/VLL3J2w.jpg" alt="Demo" height=500>
 
@@ -63,7 +65,6 @@ Request Body:
 ```
 
 # Future Plan
-* Implement fuzzy search to give the user a closest match even if there is a typo.
 * Write more unit tests. Only `package models` is fully tested now.
 * Redesign the frontend of the homepage.
 * Implement a tracker to track the statistics of meme usage.
