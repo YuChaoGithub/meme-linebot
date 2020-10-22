@@ -18,7 +18,7 @@ Usage Example:
 2. Send a meme keyword with `.jpg`. (Try `我就爛.jpg`, or `always has been.jpg`.)
 3. [Nice!](https://i.imgur.com/mUUOa0v.jpg)
 
-[Full Command List (continuously being updating)](https://meme-linebot.herokuapp.com/)
+[Full Command List (frequently updated)](https://meme-linebot.herokuapp.com/)
 
 # Development & Deployment
 It is difficult to run this chatbot in local environments because the chatbot is triggered via webhooks.
